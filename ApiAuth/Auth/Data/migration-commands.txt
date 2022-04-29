@@ -1,0 +1,3 @@
+dotnet ef migrations add InitialMigration --output-dir Auth/Data/Migrations
+dotnet ef migrations script --output Auth/Data/Sql/new-migration.sql
+dotnet ef database update

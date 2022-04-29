@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+      <UserSecretsId>fe1d935c-147e-4dca-bc5a-6468f7b16adf</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1" />
+        <PackageReference Include="Ardalis.ApiEndpoints.CodeAnalyzers" Version="4.0.0" />
+        <PackageReference Include="Ardalis.ApiEndpoints.Swashbuckle" Version="4.0.1" />
+        <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="EFCore.NamingConventions" Version="6.0.0" />
+        <PackageReference Include="FluentValidation" Version="10.4.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+        <PackageReference Include="Serilog.Enrichers.Span" Version="2.3.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.17.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4" />
+        
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Auth\Data\Migrations" />
+      <Folder Include="Auth\Data\Sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Auth\Endpoints\LoginRequest.cs">
+        <DependentUpon>Login.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Auth\Endpoints\LoginResult.cs">
+        <DependentUpon>Login.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Auth\Endpoints\RegisterAccountRequest.cs">
+        <DependentUpon>RegisterAccount.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Endpoints\MyAccountResult.cs">
+        <DependentUpon>MyAccount.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Auth\Endpoints\SendPasswordCodeRequest.cs">
+        <DependentUpon>ForgotPassword.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Auth\Endpoints\ResetPasswordRequest.cs">
+        <DependentUpon>ResetPassword.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>
