@@ -4,6 +4,7 @@ using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using Swashbuckle.AspNetCore.Annotations;
 using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace ApiAuth.Auth.Endpoints;
@@ -21,6 +22,14 @@ public class RegisterAccount: EndpointBaseAsync
         _db = db;
     }
     [HttpPost("register")]
+    [SwaggerOperation(
+        Summary = "Creates a new account",
+        Description = "Creates a new account\nEmail must be unique, password should be at least 8 chars",
+        OperationId = "Auth.Register"
+    )]
+    [SwaggerResponse(200,"Account created",typeof(Guid))]
+    [SwaggerResponse(400,"Request data is invalid")]
+    [SwaggerResponse(500, "Unable to create account")]
     public override async Task<ActionResult> HandleAsync(RegisterAccountRequest request, CancellationToken cancellationToken = new CancellationToken())
     {
         if (await _db.Accounts.AnyAsync(x => x.Email == request.Email, cancellationToken: cancellationToken))

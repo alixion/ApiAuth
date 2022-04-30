@@ -21,7 +21,7 @@ public class ValidPasswordValidator<T,TProperty> : PropertyValidator<T,TProperty
     }
 
     protected override string GetDefaultMessageTemplate(string errorCode)
-        => "'{PropertyName}' must not be a valid a password.";
+        => "'{PropertyName}' must be a valid password.";
 }
 
 public static class MyValidatorExtensions {

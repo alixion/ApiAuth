@@ -31,6 +31,7 @@ services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = ".NET API Auth", Version = "v1" });
+    c.EnableAnnotations();
     //c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "SampleEndpointApp.xml"));
     c.UseApiEndpoints();
 });
